@@ -23,8 +23,7 @@ TOF_2 = np.array([], dtype="float")
 save_event_number = []
 skipped_events = []
 for i in range(0, number_of_events):
-    # bar.update(i)
-    print(i, timing[i])
+    bar.update(i)
     try:
         TOF = generate_TOF_array(timing[i], amplitude[i], 2)
         TOF_1 = np.append(TOF_1, [TOF[0]], axis=None)
