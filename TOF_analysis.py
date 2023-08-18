@@ -15,8 +15,8 @@ print("Loading file... Done.")
 
 # Find TOF channels and keep pulses of higher amplitudes
 # timing = timing_in
-timing = [timing[i] for i in range(8,16)]
-amplitude = [amplitude[i] for i in range(8,16)]
+timing = [timing[:][i] for i in range(8,16)]
+amplitude = [amplitude[:][i] for i in range(8,16)]
 # timing = [timing[i][abs(amplitude[i]) > 40] for i in range(0,8)]
 
 # Start progress bar
