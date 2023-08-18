@@ -27,7 +27,7 @@ bar = progressbar.ProgressBar(widgets=widgets, maxval=number_of_events).start()
 TOF_1 = np.array([], dtype="float")
 TOF_2 = np.array([], dtype="float")
 save_event_number = []
-skipped_events = np.array([], dtype="int")
+skipped_events = []
 for i in range(0, number_of_events):
     bar.update(i)
     try:
@@ -36,11 +36,13 @@ for i in range(0, number_of_events):
         TOF_2 = np.append(TOF_2, [TOF[1]], axis=None)
         save_event_number = np.append(save_event_number, [event_number[i][0]], axis=None)
     except IndexError:
-        skipped_event.append(i)
+        skipped_events.append(i)
 
 if len(skipped_events) > 0:
     write_warning(run_number, skipped_events)
-    
+
+print("\033[K\033[F")
+print(f"Saving to file: ../data/TOF_{run_number}.npz")
 np.savez_compressed(f"../data/TOF_{run_number}.npz", TOF_1=TOF_1, TOF_2=TOF_2, event_number=save_event_number)
 
     
