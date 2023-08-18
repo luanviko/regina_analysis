@@ -3,7 +3,7 @@ import numpy as np
 def write_warning(run_number, skipped_events):
     with open(f"./TOF-{run_number}.log") as log:
         log.write("These events were skipped:\n")
-        for i in range(0, len(skipped_events):
+        for i in range(0, len(skipped_events)):
             log.write(f"{i}\n")
 
 def get_run_number(root_file_path):
