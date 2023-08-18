@@ -13,12 +13,6 @@ count, baseline, timing, amplitude, event_number = load_information(npz_file_pat
 number_of_events = int(1.*len(count))
 print("Loading file... Done.")
 
-# Find TOF channels and keep pulses of higher amplitudes
-# timing = timing_in
-timing = [timing[:][i] for i in range(8,16)]
-amplitude = [amplitude[:][i] for i in range(8,16)]
-# timing = [timing[i][abs(amplitude[i]) > 40] for i in range(0,8)]
-
 # Start progress bar
 widgets=[f'TOF analysis: ', progressbar.Percentage(), progressbar.Bar('\u2587', '|', '|'), ' ', progressbar.Timer()]            
 bar = progressbar.ProgressBar(widgets=widgets, maxval=number_of_events).start()
@@ -29,7 +23,8 @@ TOF_2 = np.array([], dtype="float")
 save_event_number = []
 skipped_events = []
 for i in range(0, number_of_events):
-    bar.update(i)
+    # bar.update(i)
+    print(i, timing[i])
     try:
         TOF = generate_TOF_array(timing[i], amplitude[i], 2)
         TOF_1 = np.append(TOF_1, [TOF[0]], axis=None)

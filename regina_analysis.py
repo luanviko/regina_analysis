@@ -35,8 +35,8 @@ def generate_TOF_array(timing, amplitude, N):
     sorted_amps = [np.argsort(amplitude[i]) for i in range(0,8)]
     TOF_j = np.array([], dtype="float")
     for j in range(0, N):
-        TOF0_j = np.average([timing[i][j] for i in range(0,4) if len(timing[i]) > j ])
-        TOF1_j = np.average([timing[i][j] for i in range(4,8) if len(timing[i]) > j ])
+        TOF0_j = np.average([timing[i][j] for i in range(8,12) if len(timing[i]) > j ])
+        TOF1_j = np.average([timing[i][j] for i in range(12,16) if len(timing[i]) > j ])
         TOF_j  = np.append(TOF_j, [TOF1_j - TOF0_j], axis = None)
     return TOF_j
     
