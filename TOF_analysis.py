@@ -1,10 +1,10 @@
-import numpy as np, progressbar
+import numpy as np, progressbar, sys
 from regina_analysis import *
 
 # Scale factors
 h_factor = 1./500.e6*1.e9
 v_factor = 1./16384.*2.*1.e3
-npz_file_path  = "../data/pulse_information-000435.npz"
+npz_file_path  = sys.argv[1]
 
 # Load time information
 print("Loading file...", end="\r")
